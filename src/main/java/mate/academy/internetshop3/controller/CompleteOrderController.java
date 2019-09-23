@@ -11,6 +11,7 @@ import mate.academy.internetshop3.model.Item;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.OrderService;
+import mate.academy.internetshop3.service.UserService;
 
 public class CompleteOrderController extends HttpServlet {
 
@@ -23,12 +24,15 @@ public class CompleteOrderController extends HttpServlet {
     @Inject
     private static OrderService orderService;
 
+    @Inject
+    private static UserService userService;
+
     private static final Long USER_ID = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<Item> listItem = bucketService.get(USER_ID).getItems();
+        List<Item> listItem = bucketService.get(userService.get(USER_ID).getBucketId()).getItems();
         req.setAttribute("listItem", listItem);
         orderService.completeOrder(listItem, USER_ID);
         req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);

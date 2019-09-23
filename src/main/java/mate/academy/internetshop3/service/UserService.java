@@ -1,6 +1,8 @@
 package mate.academy.internetshop3.service;
 
 import java.util.List;
+
+import mate.academy.internetshop3.model.Order;
 import mate.academy.internetshop3.model.User;
 
 public interface UserService {
@@ -13,6 +15,5 @@ public interface UserService {
 
     User upDate(User user);
 
-    List getOrders(Long userId);
+    List<Order> getOrders(Long userId);
 }
-

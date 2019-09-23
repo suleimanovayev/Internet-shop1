@@ -35,4 +35,3 @@ public class Bucket {
         this.userId = userId;
     }
 }
-

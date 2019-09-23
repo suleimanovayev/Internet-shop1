@@ -39,4 +39,3 @@ public class UserServiceImpl implements UserService {
         return userDao.get(userId).getOrders();
     }
 }
-

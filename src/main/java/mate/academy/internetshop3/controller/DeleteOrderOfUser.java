@@ -9,6 +9,7 @@ import mate.academy.internetshop3.lib.Inject;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.OrderService;
+import mate.academy.internetshop3.service.UserService;
 
 public class DeleteOrderOfUser extends HttpServlet {
 
@@ -21,13 +22,16 @@ public class DeleteOrderOfUser extends HttpServlet {
     @Inject
     private static BucketService bucketService;
 
+    @Inject
+    private static UserService userService;
+
     private static final Long USER_ID = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         orderService.delete(USER_ID);
-        bucketService.clear(bucketService.get(USER_ID).getId());
+        bucketService.clear(userService.get(USER_ID).getBucketId());
         req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
     }
 }

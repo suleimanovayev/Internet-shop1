@@ -1,6 +1,9 @@
 package mate.academy.internetshop3.dao.impl;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
+
 import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.dao.Storage;
 import mate.academy.internetshop3.lib.Dao;
@@ -37,6 +40,10 @@ public class OrderDaoImpl implements OrderDao {
     public void delete(Long id) {
         Storage.orders.removeIf(x -> x.getId().equals(id));
     }
+
+    public List<Order> getAllOrdersForUser(Long userId) {
+        return Storage.orders.stream()
+                .filter(o -> o.getUserId().equals(userId))
+                .collect(Collectors.toList());
+    }
 }
-
-

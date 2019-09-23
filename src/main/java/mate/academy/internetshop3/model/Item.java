@@ -39,4 +39,3 @@ public class Item {
                 + ", Item id " + getId();
     }
 }
-

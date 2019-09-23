@@ -11,6 +11,7 @@ import mate.academy.internetshop3.model.Item;
 import mate.academy.internetshop3.model.User;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
+import mate.academy.internetshop3.service.OrderService;
 import mate.academy.internetshop3.service.UserService;
 
 public class InjectData extends HttpServlet {
@@ -23,6 +24,9 @@ public class InjectData extends HttpServlet {
 
     @Inject
     private static BucketService bucketService;
+
+    @Inject
+    private static OrderService orderService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

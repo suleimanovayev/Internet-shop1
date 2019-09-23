@@ -30,4 +30,3 @@ public class AnnotatedClassMap {
         return classMap.get(interfaceClass);
     }
 }
-

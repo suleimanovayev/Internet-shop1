@@ -44,4 +44,3 @@ public class BucketDaoImpl implements BucketDao {
         Storage.items.remove(item);
     }
 }
-

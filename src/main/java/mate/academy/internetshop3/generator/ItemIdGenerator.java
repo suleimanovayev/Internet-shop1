@@ -10,5 +10,3 @@ public class ItemIdGenerator {
         return idGenerator++;
     }
 }
-
-

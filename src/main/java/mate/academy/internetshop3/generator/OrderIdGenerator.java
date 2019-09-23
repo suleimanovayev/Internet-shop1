@@ -10,5 +10,3 @@ public class OrderIdGenerator {
         return idGenerator++;
     }
 }
-
-

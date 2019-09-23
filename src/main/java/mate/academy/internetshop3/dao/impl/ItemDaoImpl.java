@@ -50,5 +50,3 @@ public class ItemDaoImpl implements ItemDao {
         return Storage.items;
     }
 }
-
-

@@ -17,4 +17,3 @@ public interface ItemService {
 
     List<Item> getAllItems();
 }
-

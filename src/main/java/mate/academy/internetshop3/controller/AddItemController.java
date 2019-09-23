@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop3.lib.Inject;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
+import mate.academy.internetshop3.service.UserService;
 
 public class AddItemController extends HttpServlet {
 
@@ -17,13 +18,17 @@ public class AddItemController extends HttpServlet {
     @Inject
     private static BucketService bucketService;
 
+    @Inject
+    private static UserService userService;
+
     private static final Long USER_ID = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String itemId = req.getParameter("item.id");
-        bucketService.addItem(bucketService.get(USER_ID).getId(), Long.parseLong(itemId));
+        bucketService.addItem(bucketService.get(userService.get(USER_ID)
+                .getBucketId()).getId(), Long.parseLong(itemId));
         resp.sendRedirect(req.getContextPath() + "/GetAllItems");
     }
 }

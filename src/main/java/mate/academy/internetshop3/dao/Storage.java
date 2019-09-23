@@ -13,5 +13,3 @@ public class Storage {
     public static final List<Order> orders = new ArrayList<>();
     public static final List<User> users = new ArrayList<>();
 }
-
-

@@ -69,4 +69,3 @@ public class BucketServiceImpl implements BucketService {
         return bucketDao.get(bucketId).getItems();
     }
 }
-

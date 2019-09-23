@@ -11,7 +11,7 @@ import java.util.List;
 public class Injector {
     private static List<Class> classes = new ArrayList<>();
 
-    private static final String PROGECT_MAIN_PACKAGE = "mate/academy/internetshop3";
+    private static final String PROGECT_MAIN_PACKAGE = "mate.academy.internetshop3";
 
     static {
         try {
@@ -50,7 +50,7 @@ public class Injector {
         assert classLoader != null;
         String path = packageName.replace('.', '/');
         Enumeration<URL> resources = classLoader.getResources(path);
-        List<File> dirs = new ArrayList<File>();
+        List<File> dirs = new ArrayList<>();
         while (resources.hasMoreElements()) {
             URL resource = resources.nextElement();
             dirs.add(new File(resource.getFile()));
@@ -68,6 +68,8 @@ public class Injector {
      * @param directory   The base directory
      * @param packageName The package name for classes found inside the base directory
      * @return The classes
+     * @throws ClassNotFoundException
+     * @throws IOException
      */
     private static List<Class> findClasses(File directory, String packageName)
             throws ClassNotFoundException {
@@ -91,4 +93,3 @@ public class Injector {
         return classes;
     }
 }
-

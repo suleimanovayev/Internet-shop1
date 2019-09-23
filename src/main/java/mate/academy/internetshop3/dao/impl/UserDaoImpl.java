@@ -45,5 +45,3 @@ public class UserDaoImpl implements UserDao {
         return Storage.users;
     }
 }
-
-
