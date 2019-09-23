@@ -32,3 +32,4 @@ public class DeleteItemController extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/bucket");
     }
 }
+

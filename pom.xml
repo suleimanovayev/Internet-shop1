@@ -19,7 +19,11 @@
         </maven.checkstyle.plugin.configLocation>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -38,7 +42,6 @@
             <version>1.2</version>
         </dependency>
     </dependencies>
-    <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
     <build>
         <plugins>
             <plugin>

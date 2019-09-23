@@ -14,4 +14,3 @@
 <a href="/Internetshop1_shop_war_exploded/injection">Go to items</a>
 </body>
 </html>
-
