@@ -9,32 +9,33 @@
 --%>
 <html>
 <head>
-    <title>AllItems</title>
+    <title>AllUsers</title>
 </head>
 <body>
+HELLO MATES, WELCOME TO THE ALL USERS PAGE
 <table border="1">
     <tr>
         <th>ID</th>
+        <th>Login</th>
         <th>Name</th>
-        <th>PRICE</th>
-        <th>ADD</th>
+        <th>Delete</th>
     </tr>
-    <c:forEach var="item" items="${items}">
+    <c:forEach var="users" items="${users}">
         <tr>
             <td>
-                <c:out value="${item.id}" />
+                <c:out value="${users.id}" />
             </td>
             <td>
-                <c:out value="${item.name}" />
+                <c:out value="${users.login}" />
             </td>
             <td>
-                <c:out value="${item.price}" />
+                <c:out value="${users.name}" />
             </td>
             <td>
-                <a href="/Internetshop1_war_exploded/servlet/addItem?item.id=${item.id}">ADD</a>
+                <a href="/Internetshop1_war_exploded/servlet/deleteUser?users.id=${users.id}">Delete</a>
+        </tr>
         </tr>
     </c:forEach>
-    <a href="/Internetshop1_war_exploded/servlet/bucket">Bucket</a>
 </table>
 </body>
 </html>

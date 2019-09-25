@@ -25,11 +25,11 @@ Bucket
                 <c:out value="${item.price}" />
             </td>
             <td>
-            <a href="/Internetshop1_war_exploded/deleteItem?item.id=${item.id}">Delete</a>
+            <a href="/Internetshop1_war_exploded/servlet/deleteItem?item.id=${item.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
-    <a href="/Internetshop1_war_exploded/completeOrder">CompleteOrder</a>
+    <a href="/Internetshop1_war_exploded/servlet/completeOrder">CompleteOrder</a>
 </table>
 </body>
 </html>

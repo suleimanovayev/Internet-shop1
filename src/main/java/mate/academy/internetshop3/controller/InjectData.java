@@ -32,11 +32,13 @@ public class InjectData extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        User anna = new User("Anna");
+        User anna = new User("Anna","0","0");
         userService.create(anna);
 
         Bucket bucket = new Bucket(anna.getId());
         bucketService.create(bucket);
+
+        anna.setBucketId(bucket.getId());
 
         Item item1 = new Item("Samsung s10", 27000.0);
         itemService.create(item1);

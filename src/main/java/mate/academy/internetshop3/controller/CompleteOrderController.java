@@ -27,14 +27,13 @@ public class CompleteOrderController extends HttpServlet {
     @Inject
     private static UserService userService;
 
-    private static final Long USER_ID = 0L;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<Item> listItem = bucketService.get(userService.get(USER_ID).getBucketId()).getItems();
+        Long userId = (Long) req.getSession(true).getAttribute("userId");
+        List<Item> listItem = bucketService.get(userService.get(userId).getBucketId()).getItems();
         req.setAttribute("listItem", listItem);
-        orderService.completeOrder(listItem, USER_ID);
+        orderService.completeOrder(listItem, userId);
         req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
     }
 }

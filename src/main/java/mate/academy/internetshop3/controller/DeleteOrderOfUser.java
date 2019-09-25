@@ -25,13 +25,12 @@ public class DeleteOrderOfUser extends HttpServlet {
     @Inject
     private static UserService userService;
 
-    private static final Long USER_ID = 0L;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        orderService.delete(USER_ID);
-        bucketService.clear(userService.get(USER_ID).getBucketId());
+        Long userId = (Long) req.getSession(true).getAttribute("userId");
+        orderService.delete(userId);
+        bucketService.clear(userService.get(userId).getBucketId());
         req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
     }
 }
