@@ -36,15 +36,14 @@ public class RegistrationController extends HttpServlet {
         User newUser = new User(name, login, psw);
         User user = userService.create(newUser);
 
-        Bucket bucket = new Bucket(newUser.getId());
+        Bucket bucket = new Bucket(user.getId());
         bucketService.create(bucket);
 
         Cookie cookie = new Cookie("MATE", user.getToken());
         resp.addCookie(cookie);
 
         HttpSession session = req.getSession(true);
-        session.setAttribute("userId", user.getId());
-
-        resp.sendRedirect(req.getContextPath() + "/servlet/GetAllItems");
+        session.setAttribute("user.id", user.getId());
+        resp.sendRedirect(req.getContextPath() + "/index");
     }
 }

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div>(error)</div>
-<form action="/Internetshop1_war_exploded/servlet/login" method="post">
+<form action="/Internetshop1_war_exploded/login" method="post">
     <div class="container">
         <h1>Login</h1>
         <p>Please fill in this form to sign into an account.</p>

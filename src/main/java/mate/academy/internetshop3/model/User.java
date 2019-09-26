@@ -1,12 +1,13 @@
 package mate.academy.internetshop3.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import mate.academy.internetshop3.generator.UserIdGenerator;
 
 public class User {
-
     private String name;
     private String surName;
     private String login;
@@ -15,6 +16,7 @@ public class User {
     private Long id;
     private Long bucketId;
     private List<Order> orders;
+    private Set<Role> roles;
 
     public User(String name, String login, String password) {
         this.name = name;
@@ -22,6 +24,7 @@ public class User {
         this.password = password;
         id = UserIdGenerator.getGeneratedId();
         orders = new ArrayList<>();
+        roles = new HashSet<>();
     }
 
     public void setName(String name) {
@@ -87,5 +90,17 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRole(Set<Role> role) {
+        this.roles = role;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
     }
 }

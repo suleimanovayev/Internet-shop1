@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/Internetshop1_shop_war_exploded/servlet/injection">Go to items</a>
+<a href="/internet_shop_war_exploded/servlet/GetAllItems">Go to items</a>
 </body>
 </html>

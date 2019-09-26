@@ -34,6 +34,6 @@ public class CompleteOrderController extends HttpServlet {
         List<Item> listItem = bucketService.get(userService.get(userId).getBucketId()).getItems();
         req.setAttribute("listItem", listItem);
         orderService.completeOrder(listItem, userId);
-        req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/servlet/completeOrder");
     }
 }

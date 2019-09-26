@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop3.lib.Inject;
 import mate.academy.internetshop3.model.Bucket;
 import mate.academy.internetshop3.model.Item;
+import mate.academy.internetshop3.model.Role;
 import mate.academy.internetshop3.model.User;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
@@ -32,13 +33,18 @@ public class InjectData extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        User anna = new User("Anna","0","0");
-        userService.create(anna);
+        User user = new User("User","0","0");
+        user.addRole(Role.of("USER"));
+        userService.create(user);
 
-        Bucket bucket = new Bucket(anna.getId());
+        User admin = new User("BOSS","A","B");
+        admin.addRole(Role.of("ADMIN"));
+        userService.create(admin);
+
+        Bucket bucket = new Bucket(user.getId());
         bucketService.create(bucket);
 
-        anna.setBucketId(bucket.getId());
+        user.setBucketId(bucket.getId());
 
         Item item1 = new Item("Samsung s10", 27000.0);
         itemService.create(item1);

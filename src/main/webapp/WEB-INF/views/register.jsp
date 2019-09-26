@@ -11,7 +11,7 @@
     <title>Registration</title>
 </head>
 <body>
-<form action="/Internetshop1_war_exploded/servlet/registration" method="post">
+<form action="/Internetshop1_war_exploded/registration" method="post">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
