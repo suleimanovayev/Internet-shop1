@@ -13,7 +13,5 @@ public interface ItemDao {
 
     void delete(Long id);
 
-    void deleteByItem(Item item);
-
     List<Item> getAllItems();
 }

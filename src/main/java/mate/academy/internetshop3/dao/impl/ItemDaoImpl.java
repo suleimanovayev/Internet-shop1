@@ -41,11 +41,6 @@ public class ItemDaoImpl implements ItemDao {
         Storage.items.removeIf(n -> n.getId().equals(id));
     }
 
-    @Override
-    public void deleteByItem(Item item) {
-        Storage.items.removeIf(item::equals);
-    }
-
     public List<Item> getAllItems() {
         return Storage.items;
     }

@@ -1,13 +1,16 @@
 package mate.academy.internetshop3;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
 import mate.academy.internetshop3.dao.BucketDao;
 import mate.academy.internetshop3.dao.ItemDao;
 import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.dao.UserDao;
+import mate.academy.internetshop3.dao.impl.*;
 import mate.academy.internetshop3.dao.impl.BucketDaoImpl;
-import mate.academy.internetshop3.dao.impl.ItemDaoImpl;
 import mate.academy.internetshop3.dao.impl.OrderDaoImpl;
-import mate.academy.internetshop3.dao.impl.UserDaoImpl;
+import mate.academy.internetshop3.dao.impl.jdbc.ItemDaoJdbcImpl;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.OrderService;
@@ -16,75 +19,88 @@ import mate.academy.internetshop3.service.impl.BucketServiceImpl;
 import mate.academy.internetshop3.service.impl.ItemServiceImpl;
 import mate.academy.internetshop3.service.impl.OrderServiceImpl;
 import mate.academy.internetshop3.service.impl.UserServiceImpl;
+import org.apache.log4j.Logger;
 
 public class Factory {
+    private static Logger logger = Logger.getLogger(Factory.class);
+    private static Connection connection;
 
-    private static ItemDao itemDaoInstance;
-    private static BucketDao bucketDaoInstance;
-    private static OrderDao orderDaoInstance;
-    private static UserDao userDaoInstance;
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/internetshop?"
+                    + "user=Anna&password=qwe");
+        } catch (ClassNotFoundException | SQLException e) {
+            logger.error("Cant establish connection to our DB", e);
+        }
+    }
 
-    private static ItemService itemServiceInstance;
-    private static BucketService bucketServiceInstance;
-    private static OrderService orderServiceInstance;
-    private static UserService userServiceInstance;
+    private static ItemDao itemDao;
+    private static BucketDao bucketDao;
+    private static OrderDao orderDao;
+    private static UserDao userDao;
+
+    private static ItemService itemService;
+    private static BucketService bucketService;
+    private static OrderService orderService;
+    private static UserService userService;
 
     private Factory() {
     }
 
     public static ItemDao getItemDaoInstance() {
-        if (itemDaoInstance == null) {
-            itemDaoInstance = new ItemDaoImpl();
+        if (itemDao == null) {
+            itemDao = new ItemDaoJdbcImpl(connection);
         }
-        return itemDaoInstance;
+        return itemDao;
     }
 
     public static BucketDao getBucketDaoInstance() {
-        if (bucketDaoInstance == null) {
-            bucketDaoInstance = new BucketDaoImpl();
+        if (bucketDao == null) {
+            bucketDao = new BucketDaoImpl();
         }
-        return bucketDaoInstance;
+        return bucketDao;
     }
 
     public static OrderDao getOrderDaoInstance() {
-        if (orderDaoInstance == null) {
-            orderDaoInstance = new OrderDaoImpl();
+        if (orderDao == null) {
+            orderDao = new OrderDaoImpl();
         }
-        return orderDaoInstance;
+        return orderDao;
     }
 
     public static UserDao getUserDaoInstance() {
-        if (userDaoInstance == null) {
-            userDaoInstance = new UserDaoImpl();
+        if (userDao == null) {
+            userDao = new UserDaoImpl();
         }
-        return userDaoInstance;
+        return userDao;
     }
 
     public static ItemService getItemServiceInstance() {
-        if (itemServiceInstance == null) {
-            itemServiceInstance = new ItemServiceImpl();
+        if (itemService == null) {
+            itemService = new ItemServiceImpl();
         }
-        return itemServiceInstance;
+        return itemService;
     }
 
     public static BucketService getBucketServiceInstance() {
-        if (bucketServiceInstance == null) {
-            bucketServiceInstance = new BucketServiceImpl();
+        if (bucketService == null) {
+            bucketService = new BucketServiceImpl();
         }
-        return bucketServiceInstance;
+        return bucketService;
     }
 
     public static OrderService getOrderServiceInstance() {
-        if (orderServiceInstance == null) {
-            orderServiceInstance = new OrderServiceImpl();
+        if (orderService == null) {
+            orderService = new OrderServiceImpl();
         }
-        return orderServiceInstance;
+        return orderService;
     }
 
     public static UserService getUserServiceInstance() {
-        if (userServiceInstance == null) {
-            userServiceInstance = new UserServiceImpl();
+        if (userService == null) {
+            userService = new UserServiceImpl();
         }
-        return userServiceInstance;
+        return userService;
     }
 }
