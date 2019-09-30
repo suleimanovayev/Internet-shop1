@@ -5,16 +5,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import mate.academy.internetshop3.lib.Inject;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
-import mate.academy.internetshop3.service.OrderService;
 import mate.academy.internetshop3.service.UserService;
 
-public class DeleteOrderOfUser extends HttpServlet {
-
-    @Inject
-    private static OrderService orderService;
+public class AddItemController extends HttpServlet {
 
     @Inject
     private static ItemService itemService;
@@ -29,12 +26,10 @@ public class DeleteOrderOfUser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
-        orderService.delete(userId);
-        bucketService.clear(userService.get(userId).getBucketId());
-<<<<<<< HEAD
-        req.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(req, resp);
-=======
-        req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
->>>>>>> origin/master
+
+        String itemId = req.getParameter("item.id");
+        bucketService.addItem(userService.get(userId).getBucketId(), Long.parseLong(itemId));
+
+        resp.sendRedirect(req.getContextPath() + "/servlet/GetAllItems");
     }
 }
