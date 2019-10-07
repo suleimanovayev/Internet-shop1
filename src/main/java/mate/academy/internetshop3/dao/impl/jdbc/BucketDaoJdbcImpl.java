@@ -23,7 +23,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
 
     @Override
     public Bucket create(Bucket bucket) {
-        String query = "INSERT INTO buckets (user_id) Values (?);";
+        String query = "INSERT INTO buckets (user_id) VALUES (?);";
         try (PreparedStatement preparedStatement = connection
                 .prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, bucket.getUserId());
@@ -34,7 +34,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
                 bucket.setId(bucketId);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Cant create bucket", e);
         }
         return bucket;
     }
@@ -42,14 +42,13 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     @Override
     public Bucket update(Bucket bucket) {
         String query = "UPDATE buckets SET user_id = ? WHERE bucket_id = ?;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, bucket.getUserId());
             preparedStatement.setLong(2, bucket.getId());
             preparedStatement.executeUpdate();
             return bucket;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Cant update bucket", e);
         }
         return null;
     }
@@ -57,8 +56,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     @Override
     public Bucket get(Long bucketId) {
         String query = "SELECT * FROM buckets WHERE bucket_id = ?;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, bucketId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -70,7 +68,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Cant get bucket", e);
         }
         return null;
     }
@@ -78,8 +76,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     @Override
     public void delete(Long id) {
         String query = "DELETE FROM buckets WHERE bucket_id = ?;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -90,8 +87,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     @Override
     public Bucket deleteItem(Long bucketId, Long itemId) {
         String query = "DELETE FROM buckets_items WHERE bucket_id = ? AND item_id = ?;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, bucketId);
             preparedStatement.setLong(2, itemId);
             preparedStatement.executeUpdate();
@@ -150,7 +146,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
                 itemList.add(item);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Cant get all items in a bucket", e);
         }
         return itemList;
     }

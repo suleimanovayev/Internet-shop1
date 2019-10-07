@@ -40,8 +40,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
     public Item get(Long id) {
         String query = String.format("SELECT * FROM " + DB_NAME
                 + ".items where item_id = " + id + ";");
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 String name = result.getString("name");
@@ -52,7 +51,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
                 return item;
             }
         } catch (SQLException e) {
-            logger.warn("Cant get item by id=" + id, e);
+            logger.error("Cant get item by id=" + id, e);
         }
         return null;
     }
@@ -109,8 +108,7 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
     public List<Item> getAllItems() {
         List<Item> allItems = new ArrayList<>();
         String query = "SELECT * FROM " + DB_NAME + ".items;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 Long id = result.getLong("item_id");
