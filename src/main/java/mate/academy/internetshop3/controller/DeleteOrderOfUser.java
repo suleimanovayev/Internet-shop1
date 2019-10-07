@@ -30,7 +30,7 @@ public class DeleteOrderOfUser extends HttpServlet {
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         orderService.delete(userId);
-        bucketService.clear(userService.get(userId).getBucketId());
-        req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
+        bucketService.clear(bucketService.getBucketId(userId));
+        resp.sendRedirect(req.getContextPath() + "/servlet/completeOrder");
     }
 }
