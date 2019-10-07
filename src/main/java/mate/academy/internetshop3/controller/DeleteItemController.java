@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop3.lib.Inject;
+
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.UserService;
@@ -26,8 +27,8 @@ public class DeleteItemController extends HttpServlet {
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         String itemId = req.getParameter("item.id");
-        bucketService.deleteItem(userService.get(userId)
-                .getBucketId(),Long.parseLong(itemId));
+        Long bucketId = bucketService.getBucketId(userId);
+        bucketService.deleteItem(bucketId, Long.parseLong(itemId));
         resp.sendRedirect(req.getContextPath() + "/servlet/bucket");
     }
 }
