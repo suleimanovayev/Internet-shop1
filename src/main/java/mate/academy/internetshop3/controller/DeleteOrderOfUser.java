@@ -31,10 +31,6 @@ public class DeleteOrderOfUser extends HttpServlet {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         orderService.delete(userId);
         bucketService.clear(userService.get(userId).getBucketId());
-<<<<<<< HEAD
-        req.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(req, resp);
-=======
         req.getRequestDispatcher("WEB-INF/views/order.jsp").forward(req, resp);
->>>>>>> origin/master
     }
 }
