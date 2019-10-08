@@ -58,9 +58,8 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Long userId = resultSet.getLong("user_id");
-                Long orderId = resultSet.getLong("order_id");
                 Order order = new Order(userId, get(id).getItems());
-                order.setId(orderId);
+                order.setId(id);
                 return order;
             }
         } catch (SQLException e) {
@@ -83,10 +82,10 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long orderId) {
         String query = "DELETE FROM orders WHERE order_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(1, orderId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Cant delete order", e);

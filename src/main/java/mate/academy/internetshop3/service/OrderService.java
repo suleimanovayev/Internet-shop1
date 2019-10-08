@@ -1,6 +1,8 @@
 package mate.academy.internetshop3.service;
 
 import java.util.List;
+
+import mate.academy.internetshop3.model.Item;
 import mate.academy.internetshop3.model.Order;
 
 public interface OrderService {
@@ -13,7 +15,7 @@ public interface OrderService {
 
     void delete(Long id);
 
-    Order completeOrder(List items, Long userId);
+    Order completeOrder(List<Item> items, Long userId);
 
     List<Order> getAllOrdersForUser(Long userId);
 }

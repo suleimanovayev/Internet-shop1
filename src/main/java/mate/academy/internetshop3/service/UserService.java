@@ -17,8 +17,6 @@ public interface UserService {
 
     User upDate(User user);
 
-    List<Order> getOrders(Long userId);
-
     User login(String login, String password) throws AuthenticationException;
 
     Optional<User> getByToken(String token);

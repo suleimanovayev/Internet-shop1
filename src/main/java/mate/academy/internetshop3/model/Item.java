@@ -2,6 +2,10 @@ package mate.academy.internetshop3.model;
 
 public class Item {
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private Long id;
     private String name;
     private Double price;

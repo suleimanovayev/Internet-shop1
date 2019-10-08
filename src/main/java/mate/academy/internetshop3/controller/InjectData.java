@@ -32,13 +32,11 @@ public class InjectData extends HttpServlet {
         user.addRole(Role.of("USER"));
         userService.create(user);
 
-        User admin = new User("Admin","1","1");
+        User admin = new User("Admin","5","5");
         admin.addRole(Role.of("ADMIN"));
         userService.create(admin);
 
         Bucket bucket = new Bucket(user.getId());
         bucketService.create(bucket);
-
-        user.setBucketId(bucket.getId());
     }
 }

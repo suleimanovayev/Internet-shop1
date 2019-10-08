@@ -5,13 +5,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mate.academy.internetshop3.dao.ItemDao;
+
+import mate.academy.internetshop3.dao.BucketDao;
 import mate.academy.internetshop3.lib.Inject;
 
 public class IndexController extends HttpServlet {
 
     @Inject
-    private static ItemDao itemDao;
+    private static BucketDao bucketDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

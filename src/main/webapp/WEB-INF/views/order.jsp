@@ -5,7 +5,6 @@
     <title>completeOrder</title>
 </head>
 <body>
-<a href="/Internetshop1_war_exploded/servlet/deleteorder?item.id=${item.id}">Delete Order</a>
 COMPLETE ORDER
 <table border="1">
     <tr>
@@ -26,6 +25,7 @@ COMPLETE ORDER
             </td>
         </tr>
     </c:forEach>
+    <a href="/Internetshop1_war_exploded/servlet/deleteorder">Delete</a>
 </table>
 </body>
 </html>
