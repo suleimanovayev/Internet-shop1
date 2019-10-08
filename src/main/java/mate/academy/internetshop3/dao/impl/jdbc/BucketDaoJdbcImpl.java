@@ -106,7 +106,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            logger.error("Cant add items to order", e);
+            logger.error("Cant add items to bucket", e);
             return false;
         }
     }

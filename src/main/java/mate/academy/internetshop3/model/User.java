@@ -39,6 +39,8 @@ public class User {
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }

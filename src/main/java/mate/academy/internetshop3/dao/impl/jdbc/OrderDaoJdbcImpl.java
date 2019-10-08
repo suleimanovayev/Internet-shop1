@@ -84,7 +84,7 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
 
     @Override
     public void delete(Long id) {
-        String query = "DELETE FROM orders WHERE order_id = ?;";
+        String query = "DELETE FROM orders WHERE user_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();

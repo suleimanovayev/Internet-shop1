@@ -4,9 +4,9 @@ import java.util.List;
 import mate.academy.internetshop3.generator.OrderIdGenerator;
 
 public class Order {
-    private final Long id;
-    private final Long userId;
-    private final List<Item> items;
+    private  Long id;
+    private  Long userId;
+    private  List<Item> items;
 
     public Order(Long userId, List<Item> items) {
         this.userId = userId;
@@ -17,6 +17,8 @@ public class Order {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public Long getUserId() {
         return userId;
