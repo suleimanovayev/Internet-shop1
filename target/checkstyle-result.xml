@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.19">
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\AddItemController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\BucketController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\CompleteOrderController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\DeleteItemController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\DeleteOrderOfUser.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\GetAllItemsController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\InjectData.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\LoginController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\RegistrationController.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\jdbc\ItemDaoJdbcImpl.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\jdbc\OrderDaoJdbcImpl.java">
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\Factory.java">
+<error line="5" severity="error" message="Wrong lexicographical order for &apos;java.sql.DriverManager&apos; import. Should be before &apos;java.sql.SQLException&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\lib\Injector.java">
+<error line="71" severity="error" message="At-clause should have a non-empty description." source="com.puppycrawl.tools.checkstyle.checks.javadoc.NonEmptyAtclauseDescriptionCheck"/>
+<error line="72" severity="error" message="At-clause should have a non-empty description." source="com.puppycrawl.tools.checkstyle.checks.javadoc.NonEmptyAtclauseDescriptionCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\model\Role.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\model\User.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\impl\BucketServiceImpl.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\impl\ItemServiceImpl.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\impl\OrderServiceImpl.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\impl\UserServiceImpl.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\UserService.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="7" column="8" severity="error" message="Unused import - mate.academy.internetshop3.model.Order." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\web\filters\AuthenticationFilter.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\web\filters\AuthorizationFilter.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="21" severity="error" message="Import statement for &apos;mate.academy.internetshop3.model.Role.RoleName.ADMIN&apos; is in the wrong order. Should be in the &apos;STATIC&apos; group, expecting not assigned imports on this line." source="com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck"/>
+<error line="22" severity="error" message="Import statement for &apos;mate.academy.internetshop3.model.Role.RoleName.USER&apos; is in the wrong order. Should be in the &apos;STATIC&apos; group, expecting not assigned imports on this line." source="com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck"/>
+<error line="22" column="15" severity="error" message="Unused import - mate.academy.internetshop3.model.Role.RoleName.USER." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="35" severity="error" message="Block comment has incorrect indentation level 7, expected is 8, indentation should be the same level as line 34." source="com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"/>
+</file>
+</checkstyle>
