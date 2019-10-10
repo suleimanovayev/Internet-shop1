@@ -15,10 +15,6 @@ public class Bucket {
         this.id = BucketIdGenerator.getIdGenerator();
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public void setItems(List<Item> items) {
         this.items = items;
     }
@@ -33,5 +29,13 @@ public class Bucket {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

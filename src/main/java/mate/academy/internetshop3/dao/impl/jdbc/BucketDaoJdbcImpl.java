@@ -106,7 +106,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            logger.error("Cant add items to order", e);
+            logger.error("Cant add items to bucket", e);
             return false;
         }
     }
@@ -139,8 +139,8 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
                 Long itemId = resultSet.getLong("item_id");
                 String name = resultSet.getString("name");
                 Double price = resultSet.getDouble("price");
-                Item item = new Item(name, price);
-                item.setPrice(price);
+                Item item = new Item();
+                item.setName(name);
                 item.setPrice(price);
                 item.setId(itemId);
                 itemList.add(item);

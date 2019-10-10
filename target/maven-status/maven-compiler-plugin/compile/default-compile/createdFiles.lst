@@ -8,7 +8,9 @@ mate\academy\internetshop3\model\Role$RoleName.class
 mate\academy\internetshop3\controller\BucketController.class
 mate\academy\internetshop3\service\impl\ItemServiceImpl.class
 mate\academy\internetshop3\model\User.class
+mate\academy\internetshop3\dao\hibernate\ItemDaoHibernateImpl.class
 mate\academy\internetshop3\dao\OrderDao.class
+mate\academy\internetshop3\util\HibernateUtil.class
 mate\academy\internetshop3\lib\Inject.class
 mate\academy\internetshop3\controller\DeleteItemController.class
 mate\academy\internetshop3\dao\Storage.class

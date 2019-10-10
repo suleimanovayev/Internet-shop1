@@ -14,6 +14,7 @@ C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetsh
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\web\filters\AuthorizationFilter.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\lib\Inject.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\IndexController.java
+C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\util\HibernateUtil.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\jdbc\BucketDaoJdbcImpl.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\UserDao.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\ItemDaoImpl.java
@@ -23,6 +24,7 @@ C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetsh
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\model\Order.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\BucketService.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\lib\Service.java
+C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\ItemDaoHibernateImpl\ItemDaoHibernateImpl.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\exceptions\AuthenticationException.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\UserService.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\RegistrationController.java
