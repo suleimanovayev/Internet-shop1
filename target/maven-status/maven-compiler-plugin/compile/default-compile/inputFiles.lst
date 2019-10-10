@@ -7,6 +7,7 @@ C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetsh
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\ItemService.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\LogoutController.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\generator\BucketIdGenerator.java
+C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\hibernate\ItemDaoHibernateImpl.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\Factory.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\model\Bucket.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\BucketDaoImpl.java
@@ -14,6 +15,7 @@ C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetsh
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\web\filters\AuthorizationFilter.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\lib\Inject.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\IndexController.java
+C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\util\HibernateUtil.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\jdbc\BucketDaoJdbcImpl.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\UserDao.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\impl\ItemDaoImpl.java
@@ -28,6 +30,7 @@ C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetsh
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\RegistrationController.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\lib\Injector.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\DeleteUserController.java
+C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\util\HashUtil.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\controller\DeleteItemController.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\dao\OrderDao.java
 C:\Users\lenovo\IdeaProjects\Internetshop1\src\main\java\mate\academy\internetshop3\service\impl\BucketServiceImpl.java

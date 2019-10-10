@@ -16,19 +16,24 @@ public class ItemDaoHibernateImpl implements ItemDao {
 
     @Override
     public Item create(Item item) {
-        Long itemId = null;
+        Long itemIt = null;
         Transaction transaction = null;
-        try (Session session = HibernateUtil.sessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.sessionFactory().openSession();
             transaction = session.beginTransaction();
-            itemId = (Long) session.save(item);
-            transaction.commit();
-            logger.info("Stored the item = " + item);
+            try {
+                itemIt = (Long) session.save(item);
+            } catch (Exception e) {
+                session.close();
+                throw e;
+            }
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        item.setId(itemId);
+        item.setId(itemIt);
         return item;
     }
 
@@ -43,7 +48,9 @@ public class ItemDaoHibernateImpl implements ItemDao {
     @Override
     public Item update(Item item) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.sessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.sessionFactory().openSession();
             transaction = session.beginTransaction();
             session.update(item);
             transaction.commit();
@@ -59,7 +66,9 @@ public class ItemDaoHibernateImpl implements ItemDao {
     public void delete(Long id) {
         Item item = get(id);
         Transaction transaction = null;
-        try (Session session = HibernateUtil.sessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.sessionFactory().openSession();
             transaction = session.beginTransaction();
             session.delete(item);
             transaction.commit();
@@ -68,7 +77,6 @@ public class ItemDaoHibernateImpl implements ItemDao {
                 transaction.rollback();
             }
         }
-
     }
 
     @Override
