@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.lib.Dao;
 import mate.academy.internetshop3.model.Item;
@@ -83,10 +84,10 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
     }
 
     @Override
-    public void delete(Long id) {
-        String query = "DELETE FROM orders WHERE order_id = ?;";
+    public void delete(Long userId) {
+        String query = "DELETE FROM orders WHERE user_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(1, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Cant delete order", e);

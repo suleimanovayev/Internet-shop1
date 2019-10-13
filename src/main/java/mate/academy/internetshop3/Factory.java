@@ -1,14 +1,14 @@
 package mate.academy.internetshop3;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import mate.academy.internetshop3.dao.BucketDao;
 import mate.academy.internetshop3.dao.ItemDao;
 import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.dao.UserDao;
+import mate.academy.internetshop3.dao.hibernate.ItemDaoHibernateImpl;
 import mate.academy.internetshop3.dao.impl.jdbc.BucketDaoJdbcImpl;
-import mate.academy.internetshop3.dao.impl.jdbc.ItemDaoJdbcImpl;
 import mate.academy.internetshop3.dao.impl.jdbc.OrderDaoJdbcImpl;
 import mate.academy.internetshop3.dao.impl.jdbc.UserDaoJdbcImpl;
 import mate.academy.internetshop3.service.BucketService;
@@ -50,7 +50,7 @@ public class Factory {
 
     public static ItemDao getItemDaoInstance() {
         if (itemDao == null) {
-            itemDao = new ItemDaoJdbcImpl(connection);
+            itemDao = new ItemDaoHibernateImpl();
         }
         return itemDao;
     }

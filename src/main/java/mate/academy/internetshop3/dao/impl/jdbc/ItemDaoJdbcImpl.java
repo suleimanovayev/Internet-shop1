@@ -29,6 +29,11 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setDouble(2, item.getPrice());
             preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            while (resultSet.next()) {
+                Long itemId = resultSet.getLong("item_id");
+                item.setId(itemId);
+            }
             return item;
         } catch (SQLException e) {
             logger.error("Cant create new item ", e);
@@ -58,11 +63,9 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
 
     @Override
     public Item update(Item item) {
-        PreparedStatement preparedStatement = null;
         String query = "UPDATE " + DB_NAME
                 + ".items SET name= ?, price= ?" + "WHERE item_id= ?;";
-        try {
-            preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setDouble(2, item.getPrice());
             preparedStatement.setLong(3, item.getId());
@@ -70,37 +73,19 @@ public class ItemDaoJdbcImpl extends AbstractDao<Item> implements ItemDao {
             return item;
         } catch (SQLException e) {
             logger.error("Cant update item ", e);
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return null;
     }
 
     @Override
     public void delete(Long id) {
-        PreparedStatement preparedStatement = null;
         String query = String.format("DELETE FROM "
-                + DB_NAME + ".items WHERE item_id=?;");
-        try {
-            preparedStatement = connection.prepareStatement(query);
+                + DB_NAME + ".items WHERE item_id = ?;");
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Cant remove item ", e);
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 

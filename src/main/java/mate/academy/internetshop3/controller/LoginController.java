@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -39,10 +39,10 @@ public class LoginController extends HttpServlet {
             Cookie cookie = new Cookie("MATE", user.getToken());
             resp.addCookie(cookie);
 
-            resp.sendRedirect(req.getContextPath() + "/index");
+            resp.sendRedirect(req.getContextPath() + "/servlet/GetAllItems");
         } catch (AuthenticationException e) {
             req.setAttribute("error", "incorrect login or password");
-            req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
         }
     }
 }
