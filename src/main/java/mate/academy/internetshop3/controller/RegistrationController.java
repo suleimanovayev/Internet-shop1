@@ -43,7 +43,7 @@ public class RegistrationController extends HttpServlet {
         resp.addCookie(cookie);
 
         HttpSession session = req.getSession(true);
-        session.setAttribute("user.id", user.getId());
-        resp.sendRedirect(req.getContextPath() + "/index");
+        session.setAttribute("userId", user.getId());
+        resp.sendRedirect(req.getContextPath() + "/servlet/GetAllItems");
     }
 }
