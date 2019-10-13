@@ -14,7 +14,7 @@ public interface BucketDao {
 
     void delete(Long id);
 
-    Long getBucketId(Long userId);
+    Bucket getBucketByUserId(Long userId);
 
     Boolean addItem(Long itemId, Long bucketId);
 

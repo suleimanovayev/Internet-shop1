@@ -112,14 +112,16 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     }
 
     @Override
-    public Long getBucketId(Long userId) {
+    public Bucket getBucketByUserId(Long userId) {
         String query = "SELECT * FROM buckets WHERE user_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Long bucketId = resultSet.getLong("bucket_id");
-                return bucketId;
+                Bucket bucket = new Bucket(userId);
+                bucket.setId(bucketId);
+                return bucket;
             }
         } catch (SQLException e) {
             e.printStackTrace();

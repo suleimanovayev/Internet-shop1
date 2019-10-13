@@ -8,7 +8,6 @@ import mate.academy.internetshop3.dao.UserDao;
 import mate.academy.internetshop3.exceptions.AuthenticationException;
 import mate.academy.internetshop3.lib.Inject;
 import mate.academy.internetshop3.lib.Service;
-import mate.academy.internetshop3.model.Order;
 import mate.academy.internetshop3.model.User;
 import mate.academy.internetshop3.service.UserService;
 
@@ -41,11 +40,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User upDate(User user) {
         return userDao.update(user);
-    }
-
-    @Override
-    public List<Order> getOrders(Long userId) {
-        return userDao.get(userId).getOrders();
     }
 
     @Override

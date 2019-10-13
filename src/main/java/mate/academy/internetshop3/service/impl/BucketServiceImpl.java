@@ -71,7 +71,7 @@ public class BucketServiceImpl implements BucketService {
 
     @Override
     public Long getBucketId(Long userId) {
-        Long bucketId = bucketDao.getBucketId(userId);
+        Long bucketId = bucketDao.getBucketByUserId(userId).getId();
         return bucketId;
     }
 }
