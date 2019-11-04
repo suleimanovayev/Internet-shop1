@@ -108,16 +108,17 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public User login(String login, String password) throws AuthenticationException {
-        User user = null;
         try (Session session = HibernateUtil.sessionFactory().openSession()) {
-            Query query = session.createQuery("FROM User WHERE login=:login");
+            Query query = session
+                    .createQuery("from User where login=:login and password=:password");
             query.setParameter("login", login);
-            user = (User) query.uniqueResult();
-            if (user.getPassword().equals(password)) {
-                return user;
-            }
+            query.setParameter("password", password);
+            User user = (User) query.getSingleResult();
+            return user;
+        } catch (Exception e) {
+            logger.error("Can't login user", e);
+            throw new AuthenticationException(e.getMessage());
         }
-        throw new AuthenticationException("incorrect username or password");
     }
 
     @Override
