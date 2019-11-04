@@ -10,6 +10,7 @@ import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.lib.Dao;
 import mate.academy.internetshop3.model.Item;
 import mate.academy.internetshop3.model.Order;
+import mate.academy.internetshop3.model.User;
 import org.apache.log4j.Logger;
 
 @Dao
@@ -25,7 +26,7 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
         String query = "INSERT INTO orders (user_id) VALUE (?);";
         try (PreparedStatement preparedStatement = connection
                 .prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, order.getUserId());
+            preparedStatement.setLong(1, order.getUser().getId());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             while (resultSet.next()) {
@@ -60,7 +61,9 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
             while (resultSet.next()) {
                 Long userId = resultSet.getLong("user_id");
                 Long orderId = resultSet.getLong("order_id");
-                Order order = new Order(userId, get(id).getItems());
+                Order order = new Order();
+                order.getUser().setId(userId);
+                order.setItems(get(id).getItems());
                 order.setId(orderId);
                 return order;
             }
@@ -74,7 +77,7 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
     public Order update(Order order) {
         String query = "UPDATE orders SET user_id = ? WHERE order_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setLong(1, order.getUserId());
+            preparedStatement.setLong(1, order.getUser().getId());
             preparedStatement.setLong(2, order.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -84,10 +87,10 @@ public class OrderDaoJdbcImpl extends AbstractDao<Order> implements OrderDao {
     }
 
     @Override
-    public void delete(Long userId) {
+    public void delete(User user) {
         String query = "DELETE FROM orders WHERE user_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setLong(1, userId);
+            preparedStatement.setLong(1, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Cant delete order", e);

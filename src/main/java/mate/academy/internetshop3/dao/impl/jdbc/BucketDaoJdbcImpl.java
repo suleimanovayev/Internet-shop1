@@ -10,6 +10,7 @@ import mate.academy.internetshop3.dao.BucketDao;
 import mate.academy.internetshop3.lib.Dao;
 import mate.academy.internetshop3.model.Bucket;
 import mate.academy.internetshop3.model.Item;
+import mate.academy.internetshop3.model.User;
 import org.apache.log4j.Logger;
 
 @Dao
@@ -26,7 +27,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
         String query = "INSERT INTO buckets (user_id) VALUES (?);";
         try (PreparedStatement preparedStatement = connection
                 .prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, bucket.getUserId());
+            preparedStatement.setLong(1, bucket.getUser().getId());
             preparedStatement.executeUpdate();
             ResultSet getGeneratedKey = preparedStatement.getGeneratedKeys();
             while (getGeneratedKey.next()) {
@@ -43,7 +44,7 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
     public Bucket update(Bucket bucket) {
         String query = "UPDATE buckets SET user_id = ? WHERE bucket_id = ?;";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setLong(1, bucket.getUserId());
+            preparedStatement.setLong(1, bucket.getUser().getId());
             preparedStatement.setLong(2, bucket.getId());
             preparedStatement.executeUpdate();
             return bucket;
@@ -61,9 +62,11 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 long userId = resultSet.getLong("user_id");
-                Bucket bucket = new Bucket(bucketId);
+                User user = new User();
+                user.setId(userId);
+                Bucket bucket = new Bucket(user);
                 bucket.setId(bucketId);
-                bucket.setUserId(userId);
+                bucket.setUser(user);
                 return bucket;
             }
 
@@ -119,7 +122,9 @@ public class BucketDaoJdbcImpl extends AbstractDao<Bucket> implements BucketDao 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Long bucketId = resultSet.getLong("bucket_id");
-                Bucket bucket = new Bucket(userId);
+                User user = new User();
+                user.setId(userId);
+                Bucket bucket = new Bucket(user);
                 bucket.setId(bucketId);
                 return bucket;
             }

@@ -7,10 +7,10 @@ import mate.academy.internetshop3.dao.BucketDao;
 import mate.academy.internetshop3.dao.ItemDao;
 import mate.academy.internetshop3.dao.OrderDao;
 import mate.academy.internetshop3.dao.UserDao;
+import mate.academy.internetshop3.dao.hibernate.BucketDaoHibernateImpl;
 import mate.academy.internetshop3.dao.hibernate.ItemDaoHibernateImpl;
-import mate.academy.internetshop3.dao.impl.jdbc.BucketDaoJdbcImpl;
-import mate.academy.internetshop3.dao.impl.jdbc.OrderDaoJdbcImpl;
-import mate.academy.internetshop3.dao.impl.jdbc.UserDaoJdbcImpl;
+import mate.academy.internetshop3.dao.hibernate.OrderDaoHibernateImpl;
+import mate.academy.internetshop3.dao.hibernate.UserDaoHibernateImpl;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.OrderService;
@@ -57,21 +57,21 @@ public class Factory {
 
     public static BucketDao getBucketDaoInstance() {
         if (bucketDao == null) {
-            bucketDao = new BucketDaoJdbcImpl(connection);
+            bucketDao = new BucketDaoHibernateImpl();
         }
         return bucketDao;
     }
 
     public static OrderDao getOrderDaoInstance() {
         if (orderDao == null) {
-            orderDao = new OrderDaoJdbcImpl(connection);
+            orderDao = new OrderDaoHibernateImpl();
         }
         return orderDao;
     }
 
     public static UserDao getUserDaoInstance() {
         if (userDao == null) {
-            userDao = new UserDaoJdbcImpl(connection);
+            userDao = new UserDaoHibernateImpl();
         }
         return userDao;
     }

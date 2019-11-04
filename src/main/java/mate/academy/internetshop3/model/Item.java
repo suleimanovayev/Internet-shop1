@@ -15,6 +15,7 @@ public class Item {
     @Column(name = "item_id")
     private Long id;
     private String name;
+
     @Column(name = "price", columnDefinition = "DECIMAL")
     private Double price;
 

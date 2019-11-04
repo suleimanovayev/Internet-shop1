@@ -31,12 +31,14 @@ public class RegistrationController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String name = req.getParameter("user.name");
+        String surName = req.getParameter("user.surName");
         String login = req.getParameter("login");
         String psw = req.getParameter("psw");
         User newUser = new User(name, login, psw);
+        newUser.setSurName(surName);
         User user = userService.create(newUser);
 
-        Bucket bucket = new Bucket(user.getId());
+        Bucket bucket = new Bucket(user);
         bucketService.create(bucket);
 
         Cookie cookie = new Cookie("MATE", user.getToken());

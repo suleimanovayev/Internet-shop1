@@ -22,5 +22,5 @@ public interface BucketService {
 
     List<Item> getAllItems(Long bucketId);
 
-    Long getBucketId(Long userId);
+    Bucket getBucketByUserId(Long userId);
 }

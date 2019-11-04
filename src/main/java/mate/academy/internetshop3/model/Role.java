@@ -1,13 +1,41 @@
 package mate.academy.internetshop3.model;
 
-import mate.academy.internetshop3.generator.RoleIdGenerator;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "roles")
 public class Role {
-    private final Long id;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
+    private Long id;
+
+    @Column(name = "role_name", columnDefinition = "VARCHAR")
     private RoleName roleName;
 
+    @ManyToMany(mappedBy = "roles")
+    List<User> userList;
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
     public Role() {
-        this.id = RoleIdGenerator.getGeneratedId();
     }
 
     public Role(RoleName roleName) {

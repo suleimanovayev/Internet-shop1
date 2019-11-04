@@ -27,7 +27,8 @@ public class AddItemController extends HttpServlet {
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         String itemId = req.getParameter("item.id");
-        bucketService.addItem(Long.parseLong(itemId), bucketService.getBucketId(userId));
+        bucketService.addItem(Long.parseLong(itemId), bucketService
+                .getBucketByUserId(userId).getId());
         resp.sendRedirect(req.getContextPath() + "/servlet/GetAllItems");
     }
 }
