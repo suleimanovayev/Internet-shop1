@@ -16,6 +16,8 @@ public interface UserService {
 
     User upDate(User user);
 
+    void delete(Long id);
+
     User login(String login, String password) throws AuthenticationException;
 
     Optional<User> getByToken(String token);

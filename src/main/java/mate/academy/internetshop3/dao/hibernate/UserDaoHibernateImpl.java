@@ -1,13 +1,11 @@
 package mate.academy.internetshop3.dao.hibernate;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop3.dao.UserDao;
 import mate.academy.internetshop3.exceptions.AuthenticationException;
 import mate.academy.internetshop3.lib.Dao;
-import mate.academy.internetshop3.model.Role;
 import mate.academy.internetshop3.model.User;
 import mate.academy.internetshop3.util.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -27,7 +25,6 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session = HibernateUtil.sessionFactory().openSession();
             transaction = session.beginTransaction();
-            user.setRole(Collections.singleton(Role.of("USER")));
             userId = (Long) session.save(user);
             transaction.commit();
         } catch (Exception e) {

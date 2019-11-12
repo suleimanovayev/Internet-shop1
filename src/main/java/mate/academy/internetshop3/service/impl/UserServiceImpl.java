@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void delete(Long id) {
+        userDao.delete(id);
+    }
+
+    @Override
     public User login(String login, String password) throws AuthenticationException {
         return userDao.login(login, password);
     }

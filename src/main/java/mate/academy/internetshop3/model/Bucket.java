@@ -37,6 +37,7 @@ public class Bucket {
     public Bucket() {}
 
     public Bucket(User user) {
+        this.user = user;
         items = new ArrayList<>();
     }
 

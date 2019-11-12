@@ -37,6 +37,7 @@ public class RegistrationController extends HttpServlet {
         User newUser = new User(name, login, psw);
         newUser.setSurName(surName);
         User user = userService.create(newUser);
+        long m = user.getId();
 
         Bucket bucket = new Bucket(user);
         bucketService.create(bucket);
