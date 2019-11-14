@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop3.lib.Inject;
+import mate.academy.internetshop3.model.User;
 import mate.academy.internetshop3.service.BucketService;
 import mate.academy.internetshop3.service.ItemService;
 import mate.academy.internetshop3.service.OrderService;
@@ -29,7 +30,8 @@ public class DeleteOrderOfUser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
-        orderService.delete(userId);
+        User user = userService.get(userId);
+        orderService.delete(user);
         req.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(req, resp);
     }
 }

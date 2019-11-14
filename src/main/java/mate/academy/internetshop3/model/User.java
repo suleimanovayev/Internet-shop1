@@ -3,23 +3,51 @@ package mate.academy.internetshop3.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import mate.academy.internetshop3.generator.UserIdGenerator;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long id;
     private String name;
     private String surName;
     private String login;
     private String password;
     private String token;
-    private Long id;
-    private Long bucketId;
+
+    @OneToOne(mappedBy = "user")
+    private Bucket bucket;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @Column(columnDefinition = "blob")
+    private byte[] salt;
+
+    public  User() {
+    }
 
     public User(String name, String login, String password) {
         this.name = name;
         this.login = login;
         this.password = password;
-        id = UserIdGenerator.getGeneratedId();
         roles = new HashSet<>();
     }
 
@@ -36,12 +64,8 @@ public class User {
                 + ", User id " + getId();
     }
 
-    public Long getBucketId() {
-        return bucketId;
-    }
-
-    public void setBucketId(Long bucketId) {
-        this.bucketId = bucketId;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getSurName() {
@@ -94,5 +118,21 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Bucket getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(Bucket bucket) {
+        this.bucket = bucket;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 }

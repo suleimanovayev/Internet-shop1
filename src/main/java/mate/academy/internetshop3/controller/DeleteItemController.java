@@ -27,7 +27,7 @@ public class DeleteItemController extends HttpServlet {
             throws ServletException, IOException {
         Long userId = (Long) req.getSession(true).getAttribute("userId");
         String itemId = req.getParameter("item.id");
-        Long bucketId = bucketService.getBucketId(userId);
+        Long bucketId = bucketService.getBucketByUserId(userId).getId();
         bucketService.deleteItem(bucketId, Long.parseLong(itemId));
         resp.sendRedirect(req.getContextPath() + "/servlet/bucket");
     }

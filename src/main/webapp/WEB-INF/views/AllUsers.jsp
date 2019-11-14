@@ -19,6 +19,7 @@ HELLO MATES, WELCOME TO THE ALL USERS PAGE
         <th>ID</th>
         <th>Login</th>
         <th>Name</th>
+        <th>Surname</th>
         <th>Delete</th>
     </tr>
     <c:forEach var="user" items="${users}">
@@ -31,6 +32,9 @@ HELLO MATES, WELCOME TO THE ALL USERS PAGE
             </td>
             <td>
                 <c:out value="${user.name}" />
+            </td>
+            <td>
+                <c:out value="${user.surName}" />
             </td>
             <td>
                 <a href="/Internetshop1_war_exploded/servlet/deleteUser?user.id=${user.id}">Delete</a>

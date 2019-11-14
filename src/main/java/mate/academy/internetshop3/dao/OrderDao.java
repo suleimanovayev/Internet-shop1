@@ -1,6 +1,7 @@
 package mate.academy.internetshop3.dao;
 
 import mate.academy.internetshop3.model.Order;
+import mate.academy.internetshop3.model.User;
 
 public interface OrderDao {
 
@@ -10,5 +11,5 @@ public interface OrderDao {
 
     Order update(Order order);
 
-    void delete(Long id);
+    void delete(User user);
 }

@@ -1,17 +1,45 @@
 package mate.academy.internetshop3.model;
 
 import java.util.List;
-import mate.academy.internetshop3.generator.OrderIdGenerator;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private  Long id;
-    private  Long userId;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @Transient
+    private  User user;
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "orders_items",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "item_id"))
+    @Transient
     private  List<Item> items;
 
-    public Order(Long userId, List<Item> items) {
-        this.userId = userId;
+    public Order() {}
+
+    public void setItems(List<Item> items) {
         this.items = items;
-        id = OrderIdGenerator.getGeneratedId();
     }
 
     public Long getId() {
@@ -22,17 +50,24 @@ public class Order {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
     public List<Item> getItems() {
         return items;
     }
 
+    @Override
     public String toString() {
-        return "List of product: " + getItems()
-                + " number of your order: " + getId()
-                + " your number: " + userId;
+        return "Order{"
+                + "id=" + id
+                + ", user=" + user
+                + ", items=" + items
+                + '}';
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

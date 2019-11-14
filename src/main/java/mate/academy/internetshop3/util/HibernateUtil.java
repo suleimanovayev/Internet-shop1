@@ -9,7 +9,7 @@ public class HibernateUtil {
     private static Logger logger = Logger.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory = initSessionFactory();
 
-    private static SessionFactory initSessionFactory() {
+    public static SessionFactory initSessionFactory() {
         try {
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             return sessionFactory;
