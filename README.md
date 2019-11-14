@@ -1,5 +1,5 @@
 # Internet-shop1# 
-![Internet-shop1](mate/academy/internetshop3/image/casa.jpg)
+![Internet-shop](/images/internetShop.jpg)
 
 # Table of Contents
 * [Project structure](#structure)
